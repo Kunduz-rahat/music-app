@@ -1,10 +1,12 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.contoller';
-import { AppService } from './app.service';
+import { MongooseModule } from '@nestjs/mongoose';
+import { TrackModule } from './track/track.module';
+
 
 @Module({
-	controllers:[AppController],
-	providers:[AppService]
+	imports: [
+		MongooseModule.forRoot('mongodb+srv://admin:kuzya1704@cluster0.v779xo1.mongodb.net/spotify?retryWrites=true&w=majority'),
+		TrackModule]
 
 })
 
