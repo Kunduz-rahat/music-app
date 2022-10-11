@@ -40,7 +40,7 @@ const TrackPage = () => {
       <Grid container>
         <TextField label="Ваше имя" fullWidth />
         <TextField label="Комментарий" fullWidth multiline rows={4} />
-        <Button style={{ marginLeft: "auto", padding: "5px" }}>
+        <Button style={{ marginLeft: "auto" }}>
           Отправить
         </Button>
       </Grid>
