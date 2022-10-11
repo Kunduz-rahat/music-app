@@ -1,16 +1,21 @@
 import React from 'react';
-import Navbar from '../components/Navbar';
+import MainLayout from '../layouts/MainLayout'
 
 
 export default function Home() {
   return (
     <>
-    <Navbar/>
+    <MainLayout>
     <div className="center">
     <h1>Добро пожаловать!</h1>
    <h4>Здесь собраны лучшие треки!</h4>
     </div>
-  <style jsx>
+ 
+
+
+  
+    </MainLayout>
+    <style jsx>
   {`
   .center {
       margin-top:150px;
@@ -23,8 +28,8 @@ export default function Home() {
     `
     
   }
-
   </style>
+  
     </>
   )
 }
