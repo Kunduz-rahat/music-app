@@ -1,12 +1,17 @@
 import { Box, Button, Card, Grid } from "@mui/material";
 import { useRouter } from "next/router";
 import React from "react";
+
 import TrackList from "../../components/TrackList";
+import { useActions } from "../../hooks/useActions";
+import { useTypedSelector } from "../../hooks/useTypedSelector";
 import MainLayout from "../../layouts/MainLayout";
 import { ITrack } from "../../types/track";
 
 const Index = () => {
   const router = useRouter()
+  const {} = useTypedSelector(state=>state.player)
+  const {} = useActions()
   const tracks:ITrack[] =[{
     _id:'1', 
     name:'track',
