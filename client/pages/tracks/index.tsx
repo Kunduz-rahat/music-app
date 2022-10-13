@@ -1,21 +1,24 @@
 import { Box, Button, Card, Grid } from "@mui/material";
 import { useRouter } from "next/router";
 import React from "react";
+
 import TrackList from "../../components/TrackList";
+import { useActions } from "../../hooks/useActions";
+import { useTypedSelector } from "../../hooks/useTypedSelector";
 import MainLayout from "../../layouts/MainLayout";
+import { wrapper, NextThunkDispatch } from "../../store";
+import { fetchTracks } from "../../store/action-creators/track";
 import { ITrack } from "../../types/track";
 
 const Index = () => {
   const router = useRouter()
-  const tracks:ITrack[] =[{
-    _id:'1', 
-    name:'track',
-    artist:'eminen',
-    text:'dsfsfs',
-    listens:5,
-    audio:'https://sefon.pro/mp3/732898-rasa-pogudim/', 
-    picture:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgXbm2a_x4fJpCGdH00XCIshHICrVnJTy3S52tzazW&s'
-  }]
+  const {tracks, error}= useTypedSelector(state => state.track)
+
+  if(error){
+return <MainLayout>
+  <h1>{error}</h1>
+</MainLayout>
+  }
   return (
     <MainLayout>
       <Grid container justifyContent='center'>
@@ -34,3 +37,13 @@ const Index = () => {
 };
 
 export default Index;
+
+export const getServerSideProps = wrapper.getServerSideProps(
+  store => async () =>
+  {
+      const dispatch = store.dispatch as NextThunkDispatch;
+      await dispatch(fetchTracks());
+
+      return { props: {} }
+  }
+);

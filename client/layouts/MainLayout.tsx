@@ -2,6 +2,7 @@ import { Container } from '@mui/material'
 import  Head  from 'next/head';
 import React from 'react'
 import Navbar from '../components/Navbar'
+import Player from '../components/Player';
 
 
 interface MainLayoutProps {
@@ -30,7 +31,7 @@ const MainLayout: React.FC<MainLayoutProps>
 			  <Container style={{margin: '90px 0'}}>
 					{children}
 			  </Container>
-			  
+			  <Player/>
 		 </>
 	);
 };
