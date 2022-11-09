@@ -1,35 +1,38 @@
-import { Box, Button, Card, Grid } from "@mui/material";
-import { useRouter } from "next/router";
-import React from "react";
-
-import TrackList from "../../components/TrackList";
-import { useActions } from "../../hooks/useActions";
-import { useTypedSelector } from "../../hooks/useTypedSelector";
-import MainLayout from "../../layouts/MainLayout";
-import { wrapper, NextThunkDispatch } from "../../store";
-import { fetchTracks } from "../../store/action-creators/track";
-import { ITrack } from "../../types/track";
+import React from 'react';
+import { wrapper, NextThunkDispatch } from '../../store';
+import { Box, Button, Card, Grid } from '@mui/material';
+import { useRouter } from 'next/router';
+import TrackList from '../../components/TrackList';
+import MainLayout from '../../layouts/MainLayout';
+import { useTypedSelector } from '../../hooks/useTypedSelector';
+import { useActions } from '../../hooks/useActions';
+import { fetchTracks } from '../../store/action-creators/track';
+import { ITrack } from '../../types/track';
 
 const Index = () => {
-  const router = useRouter()
-  const {tracks, error}= useTypedSelector(state => state.track)
+  const router = useRouter();
+  const { tracks, error } = useTypedSelector((state) => state.track);
 
-  if(error){
-return <MainLayout>
-  <h1>{error}</h1>
-</MainLayout>
+  if (error) {
+    return (
+      <MainLayout>
+        <h1>{error}</h1>
+      </MainLayout>
+    );
   }
   return (
     <MainLayout>
-      <Grid container justifyContent='center'>
-        <Card style={{width:900}}>
-			<Box p={3}>
-			<Grid container justifyContent='space-between'>
-            <h1>Список треков</h1>
-            <Button onClick={()=> router.push('/tracks/create')}>Загрузить...</Button>
-          </Grid>
-			</Box>
-          <TrackList tracks={tracks}/>
+      <Grid container justifyContent="center">
+        <Card style={{ width: 900 }}>
+          <Box p={3}>
+            <Grid container justifyContent="space-between">
+              <h1>Список треков</h1>
+              <Button onClick={() => router.push('/tracks/create')}>
+                Загрузить...
+              </Button>
+            </Grid>
+          </Box>
+          <TrackList tracks={tracks} />
         </Card>
       </Grid>
     </MainLayout>
@@ -39,11 +42,10 @@ return <MainLayout>
 export default Index;
 
 export const getServerSideProps = wrapper.getServerSideProps(
-  store => async () =>
-  {
-      const dispatch = store.dispatch as NextThunkDispatch;
-      await dispatch(fetchTracks());
+  (store) => async () => {
+    const dispatch = store.dispatch as NextThunkDispatch;
+    await dispatch(fetchTracks());
 
-      return { props: {} }
+    return { props: {} };
   }
 );
