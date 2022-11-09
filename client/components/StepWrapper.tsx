@@ -1,10 +1,10 @@
-import { Card, Container, Grid, Step, StepLabel, Stepper } from "@mui/material";
-import React from "react";
+import React from 'react';
+import { Card, Container, Grid, Step, StepLabel, Stepper } from '@mui/material';
 
 interface StepWrapperProps {
   activeStep: number;
 }
-const steps = ["Информация о треке", "Загрузите обложку", "Загрузите сам трек"];
+const steps = ['Информация о треке', 'Загрузите обложку', 'Загрузите сам трек'];
 const StepWrapper: React.FC<StepWrapperProps> = ({ activeStep, children }) => {
   return (
     <Container>
@@ -18,7 +18,7 @@ const StepWrapper: React.FC<StepWrapperProps> = ({ activeStep, children }) => {
       <Grid
         container
         justifyContent="center"
-        style={{ margin: "70px 0", height: 270 }}
+        style={{ margin: '70px 0', height: 270 }}
       >
         <Card style={{ width: 600 }}>{children}</Card>
       </Grid>
