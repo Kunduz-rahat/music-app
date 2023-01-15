@@ -43,4 +43,10 @@ interface SetVolumeAction{
 	payload:number
 }
 
-export type PlayerAction = PauseAction | PlayAction |  SetActiveAction | SetCurrentTimeAction | SetDurationAction | SetVolumeAction
+export type PlayerAction = 
+PauseAction | 
+PlayAction |  
+SetActiveAction | 
+SetCurrentTimeAction | 
+SetDurationAction | 
+SetVolumeAction
